@@ -96,3 +96,8 @@ sudo systemctl restart ollama.service
 # Check ollama status
 sudo systemctl status ollama.service
 ```
+
+## Run our code
+```bash
+python run.py
+```
