@@ -1,0 +1,108 @@
+Original Question:
+臺灣的國寶魚叫做什麼?
+
+=========================
+
+Please refer to the following references to answer the question:
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 臺灣的國寶魚是臺灣櫻花鉤吻鮭。
+Relevance Score: 0.9994542002677917
+Source: https://www.spnp.gov.tw/News_Content.aspx?n=14470&s=327387
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 櫻花鉤吻鮭（學名：Oncorhynchus masou formosanus），也稱梨山鱒，其他俗名尚有台灣鮭魚、台灣鱒、次高鱒、台灣山女Taiwan Yamame、次高山女[2]（p. 88）、台灣陸封型櫻鮭、本邦（泰雅語：Bngbang、Mnbang、n'bang等拼寫法[3]:116,157）和沙拉茅鱒/斯拉茂鱒（原住民泰雅語對梨山稱呼的日文轉寫サラマオ鱒Saramao masu和漢字二次音譯），是位於亞熱帶的台灣內唯一一種冷水性淡水魚，也是只產於台灣的特有櫻鱒亞種，為末次冰期消退後的孑遺生物。
+Relevance Score: 0.9924502372741699
+Source: https://zh.wikipedia.org/zh-tw/櫻花鉤吻鮭
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 民眾可透過手機等行動裝置掃描QR Code或上YouTube搜尋「國寶魚實境秀」，即時觀賞臺灣櫻花鉤吻鮭的畫面。
+Relevance Score: 0.5750027298927307
+Source: https://www.spnp.gov.tw/News_Content.aspx?n=14470&s=327387
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 由於櫻花鉤吻鮭相當稀有且瀕臨絕種，加上它的生活習性迥異於其他魚類，遂得「國寶魚」之美譽。
+Relevance Score: 0.4482435882091522
+Source: https://zh.wikipedia.org/zh-tw/櫻花鉤吻鮭
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 1938年台灣總督府發行刊物，隨於1941年將撒拉茂鱒指定公告為天然紀念物。
+Relevance Score: 0.04038361832499504
+Source: https://zh.wikipedia.org/zh-tw/櫻花鉤吻鮭
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 為了對珍貴而日益稀少的國寶魚進行復育的工作，林務局首先在1977年將櫻花鉤吻鮭的棲息地劃為「國有林自然保護區」。
+Relevance Score: 0.03922836855053902
+Source: https://zh.wikipedia.org/zh-tw/櫻花鉤吻鮭
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 雪霸國家公園管理處多年來復育臺灣櫻花鉤吻鮭，野外族群量已穩定成長。
+Relevance Score: 0.005020287819206715
+Source: https://www.spnp.gov.tw/News_Content.aspx?n=14470&s=327387
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 雪霸處將與日本研究團隊合作，研究臺灣櫻花鉤吻鮭與苦花之間的生態競合。
+Relevance Score: 0.0013045836240053177
+Source: https://www.spnp.gov.tw/News_Content.aspx?n=14470&s=327387
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 2023年3月，櫻花鉤吻鮭野外族群數量再創歷史新高，總計15,374尾，是1995年復育時的60倍，逐步達成復育第三階段目標「復原大甲溪上游曾經存在的歷史溪流族群」。
+Relevance Score: 0.0006364083383232355
+Source: https://zh.wikipedia.org/zh-tw/櫻花鉤吻鮭
+----------------------------------
+Sub-question: 臺灣的國寶魚叫做什麼?
+Reference: 雪霸處持續從物種保育、棲地維護與環境永續等多面向推動保育工作，並積極尋求企業加入ESG保育合作行列。
+Relevance Score: 1.7776177628547885e-05
+Source: https://www.spnp.gov.tw/News_Content.aspx?n=14470&s=327387
+----------------------------------
+Triplets (Knowledge Graph): 
+`Subject: "臺灣櫻花鉤吻鮭", Predicate: "是", Object: "臺灣的國寶魚"`
+`Subject: "櫻花鉤吻鮭", Predicate: "學名", Object: "Oncorhynchus masou formosanus"`
+`Subject: "櫻花鉤吻鮭", Predicate: "也稱", Object: "梨山鱒"`
+`Subject: "櫻花鉤吻鮭", Predicate: "其他俗名尚有", Object: "台灣鮭魚"`
+`Subject: "櫻花鉤吻鮭", Predicate: "其他俗名尚有", Object: "台灣鱒"`
+`Subject: "櫻花鉤吻鮭", Predicate: "其他俗名尚有", Object: "次高鱒"`
+`Subject: "櫻花鉤吻鮭", Predicate: "其他俗名尚有", Object: "台灣山女Taiwan Yamame"`
+`Subject: "櫻花鉤吻鮭", Predicate: "其他俗名尚有", Object: "次高山女"`
+`Subject: "櫻花鉤吻鮭", Predicate: "其他俗名尚有", Object: "台灣陸封型櫻鮭"`
+`Subject: "櫻花鉤吻鮭", Predicate: "其他俗名尚有", Object: "本邦"`
+`Subject: "櫻花鉤吻鮭", Predicate: "其他俗名尚有", Object: "沙拉茅鱒/斯拉茂鱒"`
+`Subject: "櫻花鉤吻鮭", Predicate: "是", Object: "位於亞熱帶的台灣內唯一一種冷水性淡水魚"`
+`Subject: "櫻花鉤吻鮭", Predicate: "是", Object: "只產於台灣的特有櫻鱒亞種"`
+`Subject: "櫻花鉤吻鮭", Predicate: "為", Object: "末次冰期消退後的孑遺生物"`
+`Subject: "民眾", Predicate: "可透過", Object: "手機等行動裝置掃描QR Code"`
+`Subject: "民眾", Predicate: "可透過", Object: "上YouTube搜尋「國寶魚實境秀」"`
+`Subject: "民眾", Predicate: "觀賞", Object: "臺灣櫻花鉤吻鮭的畫面"`
+`Subject: "櫻花鉤吻鮭", Predicate: "相當", Object: "稀有"`
+`Subject: "櫻花鉤吻鮭", Predicate: "瀕臨", Object: "絕種"`
+`Subject: "櫻花鉤吻鮭", Predicate: "生活習性", Object: "迥異於其他魚類"`
+`Subject: "櫻花鉤吻鮭", Predicate: "得", Object: "「國寶魚」之美譽"`
+`Subject: "台灣總督府", Predicate: "發行", Object: "刊物"`
+`Subject: "台灣總督府", Predicate: "將", Object: "撒拉茂鱒指定公告為天然紀念物"`
+`Subject: "林務局", Predicate: "進行", Object: "復育的工作"`
+`Subject: "林務局", Predicate: "將", Object: "櫻花鉤吻鮭的棲息地劃為「國有林自然保護區」"`
+`Subject: "雪霸國家公園管理處", Predicate: "復育", Object: "臺灣櫻花鉤吻鮭"`
+`Subject: "雪霸國家公園管理處", Predicate: "量", Object: "已穩定成長"`
+`Subject: "雪霸處", Predicate: "將與", Object: "日本研究團隊"`
+`Subject: "雪霸處", Predicate: "合作", Object: "研究"`
+`Subject: "雪霸處", Predicate: "研究", Object: "臺灣櫻花鉤吻鮭與苦花之間的生態競合"`
+`Subject: "櫻花鉤吻鮭", Predicate: "數量", Object: "再創歷史新高"`
+`Subject: "櫻花鉤吻鮭", Predicate: "數量", Object: "15,374尾"`
+`Subject: "櫻花鉤吻鮭", Predicate: "是", Object: "1995年復育時的60倍"`
+`Subject: "櫻花鉤吻鮭", Predicate: "達成", Object: "復育第三階段目標"`
+`Subject: "雪霸處", Predicate: "推動", Object: "保育工作"`
+`Subject: "雪霸處", Predicate: "尋求", Object: "企業加入ESG保育合作行列"`
+
+
+
+=========================
+
+Notes:
+1. The answer must begin with the correct option from the question choices.
+2. If the question is multi-choice, choose the best answer (A), (B), (C) or (D) based on your understanding of the question.
+3. If the reference knowledges are unavailable or unreasonable, you need to answer with your own understanding.
+4. Answer the question in English.
+
+=========================
+
+Answer:

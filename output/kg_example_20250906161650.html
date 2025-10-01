@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Knowledge Graph 知識圖譜</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    svg {
+      width: 100vw;
+      height: 100vh;
+      background: #fff;
+    }
+    .edge-label {
+      font-size: 14px;
+      fill: #333;
+      pointer-events: none;
+    }
+    .node text {
+      fill: #111;
+    }
+  </style>
+</head>
+<body>
+<svg></svg>
+<script>
+// === Triplets ===
+const triplets = [['臺灣櫻花鉤吻鮭', '是', '臺灣的國寶魚'], ['櫻花鉤吻鮭', '學名', 'Oncorhynchus masou formosanus'], ['櫻花鉤吻鮭', '也稱', '梨山鱒'], ['櫻花鉤吻鮭', '其他俗名尚有', '台灣鮭魚'], ['櫻花鉤吻鮭', '其他俗名尚有', '台灣鱒'], ['櫻花鉤吻鮭', '其他俗名尚有', '次高鱒'], ['櫻花鉤吻鮭', '其他俗名尚有', '台灣山女Taiwan Yamame'], ['櫻花鉤吻鮭', '其他俗名尚有', '次高山女'], ['櫻花鉤吻鮭', '其他俗名尚有', '台灣陸封型櫻鮭'], ['櫻花鉤吻鮭', '其他俗名尚有', '本邦'], ['櫻花鉤吻鮭', '其他俗名尚有', '沙拉茅鱒/斯拉茂鱒'], ['櫻花鉤吻鮭', '是', '位於亞熱帶的台灣內唯一一種冷水性淡水魚'], ['櫻花鉤吻鮭', '是', '只產於台灣的特有櫻鱒亞種'], ['櫻花鉤吻鮭', '為', '末次冰期消退後的孑遺生物'], ['民眾', '可透過', '手機等行動裝置掃描QR Code'], ['民眾', '可透過', '上YouTube搜尋「國寶魚實境秀」'], ['民眾', '觀賞', '臺灣櫻花鉤吻鮭的畫面'], ['櫻花鉤吻鮭', '相當', '稀有'], ['櫻花鉤吻鮭', '瀕臨', '絕種'], ['櫻花鉤吻鮭', '生活習性', '迥異於其他魚類'], ['櫻花鉤吻鮭', '得', '「國寶魚」之美譽'], ['台灣總督府', '發行', '刊物'], ['台灣總督府', '將', '撒拉茂鱒指定公告為天然紀念物'], ['林務局', '進行', '復育的工作'], ['林務局', '將', '櫻花鉤吻鮭的棲息地劃為「國有林自然保護區」'], ['雪霸國家公園管理處', '復育', '臺灣櫻花鉤吻鮭'], ['雪霸國家公園管理處', '量', '已穩定成長'], ['雪霸處', '將與', '日本研究團隊'], ['雪霸處', '合作', '研究'], ['雪霸處', '研究', '臺灣櫻花鉤吻鮭與苦花之間的生態競合'], ['櫻花鉤吻鮭', '數量', '再創歷史新高'], ['櫻花鉤吻鮭', '數量', '15,374尾'], ['櫻花鉤吻鮭', '是', '1995年復育時的60倍'], ['櫻花鉤吻鮭', '達成', '復育第三階段目標'], ['雪霸處', '推動', '保育工作'], ['雪霸處', '尋求', '企業加入ESG保育合作行列']];
+
+// === Graph Data Conversion ===
+const nodesSet = new Set();
+const links = triplets.map(([source, label, target]) => {
+  nodesSet.add(source);
+  nodesSet.add(target);
+  return { source, target, label };
+});
+const nodes = Array.from(nodesSet).map(id => ({ id }));
+
+// Map repeated edges
+const linkGroups = {};
+links.forEach(link => {
+  const key = `${link.source}->${link.target}`;
+  if (!linkGroups[key]) linkGroups[key] = [];
+  linkGroups[key].push(link);
+});
+Object.values(linkGroups).forEach(group => {
+  group.forEach((link, i) => {
+    link.linkIndex = i;
+    link.linkTotal = group.length;
+  });
+});
+
+// === SVG Setup ===
+const svg = d3.select("svg");
+const width = window.innerWidth;
+const height = window.innerHeight;
+const zoomGroup = svg.append("g");
+
+svg.call(d3.zoom().scaleExtent([0.2, 5]).on("zoom", e => {
+  zoomGroup.attr("transform", e.transform);
+}));
+
+svg.append("defs").append("marker")
+  .attr("id", "arrow")
+  .attr("viewBox", "0 -8 16 16")
+  .attr("refX", 34)
+  .attr("refY", 0)
+  .attr("markerWidth", 12)
+  .attr("markerHeight", 12)
+  .attr("orient", "auto")
+  .append("path")
+  .attr("d", "M0,-8L16,0L0,8")
+  .attr("fill", "#999");
+
+// === Dynamic Forces ===
+const tripletCount = triplets.length;
+const linkDistance = 160 + tripletCount * 6;
+const chargeStrength = -300 - tripletCount * 4;
+
+const simulation = d3.forceSimulation(nodes)
+  .force("link", d3.forceLink(links).id(d => d.id).distance(linkDistance))
+  .force("charge", d3.forceManyBody().strength(chargeStrength))
+  .force("center", d3.forceCenter(width / 2, height / 2))
+  .force("collide", d3.forceCollide().radius(35).strength(1));
+
+// === Draw Curved Edges ===
+const link = zoomGroup.append("g")
+  .selectAll("path")
+  .data(links)
+  .enter()
+  .append("path")
+  .attr("stroke", "#999")
+  .attr("stroke-opacity", 0.6)
+  .attr("stroke-width", 1.5)
+  .attr("fill", "none")
+  .attr("marker-end", "url(#arrow)");
+
+// === Edge Labels ===
+const edgeLabels = zoomGroup.append("g")
+  .selectAll("text")
+  .data(links)
+  .enter()
+  .append("text")
+  .attr("class", "edge-label")
+  .attr("text-anchor", "middle")
+  .text(d => d.label);
+
+// === Draw Nodes ===
+const node = zoomGroup.append("g")
+  .selectAll("g")
+  .data(nodes)
+  .enter()
+  .append("g")
+  .call(d3.drag()
+    .on("start", (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+    .on("end", (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+node.append("circle")
+  .attr("r", 24)
+  .attr("fill", "#69b3a2")
+  .attr("stroke", "#333")
+  .attr("stroke-width", 1.5);
+
+node.append("text")
+  .attr("x", tripletCount < 10 ? 0 : 28)
+  .attr("y", 5)
+  .attr("text-anchor", tripletCount < 10 ? "middle" : "start")
+  .attr("font-size", tripletCount < 10 ? "18px" : "14px")
+  .text(d => d.id);
+
+// === Curve Path Calculation ===
+function computeCurvePath(d) {
+  const x1 = d.source.x, y1 = d.source.y;
+  const x2 = d.target.x, y2 = d.target.y;
+  const dx = x2 - x1, dy = y2 - y1;
+  const dr = Math.sqrt(dx * dx + dy * dy);
+  const curveOffset = 50 * ((d.linkIndex % 2 === 0 ? 1 : -1) * Math.ceil((d.linkIndex + 1) / 2));
+  const mx = (x1 + x2) / 2;
+  const my = (y1 + y2) / 2;
+  const nx = -(y2 - y1), ny = x2 - x1;
+  const norm = Math.sqrt(nx * nx + ny * ny);
+  const cx = mx + (curveOffset * nx) / norm;
+  const cy = my + (curveOffset * ny) / norm;
+  return `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`;
+}
+
+// === Tick Update ===
+simulation.on("tick", () => {
+  link.attr("d", computeCurvePath);
+  edgeLabels
+    .attr("x", d => {
+      const x1 = d.source.x, x2 = d.target.x;
+      return (x1 + x2) / 2;
+    })
+    .attr("y", d => {
+      const y1 = d.source.y, y2 = d.target.y;
+      const offset = 20 + d.linkIndex * 6;
+      return (y1 + y2) / 2 - offset;
+    });
+  node.attr("transform", d => `translate(${d.x},${d.y})`);
+});
+
+// === Auto Zoom Fit ===
+simulation.on("end", () => {
+  const coords = node.data().map(d => [d.x, d.y]);
+  const xExtent = d3.extent(coords, d => d[0]);
+  const yExtent = d3.extent(coords, d => d[1]);
+  const dx = xExtent[1] - xExtent[0];
+  const dy = yExtent[1] - yExtent[0];
+  const cx = (xExtent[0] + xExtent[1]) / 2;
+  const cy = (yExtent[0] + yExtent[1]) / 2;
+  const scale = 0.85 / Math.max(dx / width, dy / height);
+  const translate = [width / 2 - scale * cx, height / 2 - scale * cy];
+  svg.transition().duration(500)
+    .call(d3.zoom().transform, d3.zoomIdentity.translate(...translate).scale(scale));
+});
+</script>
+</body>
+</html>
