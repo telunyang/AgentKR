@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1067618260.svg)](https://doi.org/10.5281/zenodo.17240909)
+
 # AgentKR
 - This work proposes an integrated knowledge retrieval (KR) system combining re-rankers, local LLMs, AI agents, and knowledge graphs, along with other open-source technologies. It aims to address the hallucination and incomplete retrieval issues of large language models when handling complex queries. Through multi-stage retrieval and data processing pipelines, enhanced by knowledge graphs for interpretability and accuracy, the system improves the efficiency and reliability of knowledge acquisition for users.
 - The system supports multiple languages, real-time knowledge updates, and localized deployment, balancing information security and application flexibility. With modular functionality and high stability, it is suitable for education, research, legal, and business domains, and can be widely applied to enterprise knowledge base construction and intelligent Q&A systems, demonstrating strong industrial potential and social impact.
