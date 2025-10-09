@@ -99,7 +99,14 @@ sudo systemctl restart ollama.service
 sudo systemctl status ollama.service
 ```
 
-## Run our code
+## How to run our pipeline
+
+### 1. Launch web api for re-ranking service
+```bash
+python web_api.py
+```
+
+### 2. Launch the main pipeline
 ```bash
 python run.py
 ```
